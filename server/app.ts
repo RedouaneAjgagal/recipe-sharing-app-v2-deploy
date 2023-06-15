@@ -17,7 +17,6 @@ import origin from './config/origin';
 import cookieParser from 'cookie-parser';
 import mongoSanitize from 'express-mongo-sanitize';
 import helmet from "helmet";
-import xssCleaner from "xss-clean";
 import fileUpload from "express-fileupload";
 import { v2 as cloudinary } from "cloudinary";
 import cors from "cors";
@@ -63,7 +62,6 @@ app.use(helmet({
     }
 }));
 app.use(mongoSanitize());
-app.use(xssCleaner());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(fileUpload({ useTempFiles: true, safeFileNames: true }));
 
