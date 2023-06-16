@@ -15,6 +15,7 @@ import origin from './config/origin';
 
 // extra packages
 import cookieParser from 'cookie-parser';
+import { xss } from 'express-xss-sanitizer';
 import mongoSanitize from 'express-mongo-sanitize';
 import helmet from "helmet";
 import fileUpload from "express-fileupload";
@@ -50,6 +51,7 @@ app.use(cors({
     origin,
     credentials: true
 }));
+app.use(xss());
 app.use(express.json());
 app.use(helmet({
     contentSecurityPolicy: {
